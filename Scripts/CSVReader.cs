@@ -2,7 +2,7 @@
 using System.Collections;
 using System.IO;
 /// <summary>
-/// CSVReader
+/// CSVReader.cs
 /// データ保管を別に用意しておきたかったので、CSVを読めるようにしてみた
 /// </summary>
 public class CSVReader : MonoBehaviour {
