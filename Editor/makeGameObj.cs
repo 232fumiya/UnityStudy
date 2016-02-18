@@ -3,7 +3,7 @@ using UnityEditor;
 using System.Collections;
 /// <summary>
 /// makeGameObj
-/// 大量配置したいオブジェクトを自動生成したい。
+/// 大量配置したいオブジェクトを自動生成する。
 /// </summary>
 class makeGameObj : EditorWindow {
 	private  GameObject parent;
