@@ -8,7 +8,8 @@ using System.Collections;
 class makeGameObj : EditorWindow {
 	private  GameObject parent;
 	private string parentName="parent";
-	private  GameObject[] child=new GameObject[10]; 
+	private  GameObject[] child=new GameObject[10];
+	private string[] childName=new string[10];
 	private int child_type=1;
 	private Vector3 startPos=Vector3.zero;
 	private Vector3 interval=new Vector3(1,1,1);
@@ -20,8 +21,6 @@ class makeGameObj : EditorWindow {
 	}
 	void OnGUI() {
 		try {
-			
-			Debug.Log(child.Length);
 			GUILayout.Label("ParentGameObject: ", EditorStyles.boldLabel);
 			parent = EditorGUILayout.ObjectField("Parent", parent, typeof(GameObject), true) as GameObject;
 			parentName=EditorGUILayout.TextField("name", parentName);
@@ -33,11 +32,13 @@ class makeGameObj : EditorWindow {
 				child_type=10;
 			for(int i=0; i<child_type;i++)
 			{
+				GUILayout.Label("ChildGameObject["+i+"]:", EditorStyles.boldLabel);
 				child[i]= EditorGUILayout.ObjectField("child", child[i], typeof(GameObject), true) as GameObject;
+				childName[i]=EditorGUILayout.TextField("name", childName[i]);
+
 			}
 			GUILayout.Label("CreateFirstPosition: ", EditorStyles.boldLabel);
 			startPos =EditorGUILayout.Vector3Field("Pos", startPos);
-
 			GUILayout.Label("intervalPosition: ", EditorStyles.boldLabel);
 			interval =EditorGUILayout.Vector3Field("interval", interval);
 
@@ -59,14 +60,21 @@ class makeGameObj : EditorWindow {
 		int childNum = 0;
 		for (int j=0; j<makeCount; j++) 
 		{
-			while(child[childNum]==null)
+			int count=0;
+			while(child[childNum]==null&&count<=10)
 			{
 				if(childNum+1<child_type)
 					childNum++;
 				else
 					childNum=0;
+				count++;
 			}
-				GameObject childObj=Instantiate(child[childNum],CreatePos,Quaternion.identity)as GameObject;
+			if(child[childNum]==null)
+				return;
+			GameObject childObj=Instantiate(child[childNum],CreatePos,Quaternion.identity)as GameObject;
+			childObj.name=childName[childNum];
+			if(childName[childNum]=="")
+				childObj.name="child["+j+"]";
 			childObj.transform.parent=parent.transform;
 			CreatePos+=interval;
 			if(childNum+1<child_type)
