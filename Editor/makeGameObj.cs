@@ -6,14 +6,20 @@ using System.Collections;
 /// 大量配置したいオブジェクトを自動生成する。
 /// </summary>
 class makeGameObj : EditorWindow {
+	//親オブジェクト
 	private  GameObject parent;
 	private string parentName="parent";
+	//子オブジェクト
 	private  GameObject[] child=new GameObject[10];
 	private string[] childName=new string[10];
 	private int child_type=1;
+	//生成地点
 	private Vector3 startPos=Vector3.zero;
+	//生成の間隔を決める
 	private Vector3 interval=new Vector3(1,1,1);
+	//生成数を決める
 	private int makeCount=1;
+	
 	[MenuItem ("Window/makeGameObj")]
 
 	public static void  ShowWindow () {
