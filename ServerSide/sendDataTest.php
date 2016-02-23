@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!--データベースに文字列データを送る-->
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery読み込み -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- BootstrapのJS読み込み -->
-<script src="js/bootstrap.min.js"></script>
-
 	<meta charset="utf-8">
 	<title></title>
 </head>
