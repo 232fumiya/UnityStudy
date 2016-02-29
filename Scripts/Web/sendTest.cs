@@ -15,7 +15,10 @@ public class sendTest : MonoBehaviour {
 	{
 		string URL = "データを飛ばすurl";
 		WWWForm form = new WWWForm ();
+		//受け取り側はsendDataTest.phpを参照して下さい・
 		form.AddField("test",message);
+		//受け取り側はSampleSendImage.phpを参照して下さい・
+		form.AddBinaryData("image",bytes,"img.png","image/png");
 		WWW www = new WWW (URL,form);
 		yield return www;
 		if (www.error != null)
